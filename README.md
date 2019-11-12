@@ -38,10 +38,10 @@ private File createImageFile() throws IOException {
                 storageDir      /* directory */
         );
 
-        // Save a file: path for use with ACTION_VIEW intents
+  Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.getAbsolutePath();
         return image;
-    }
+        }
 //============
 
 Then back to Manifest file to add a provider for the application
@@ -93,7 +93,7 @@ private void dispatchTakePictureIntent() {
                 // Error occurred while creating the File
 
             }
-            // Continue only if the File was successfully created
+ // Continue only if the File was successfully created
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
                         "com.example.android.fileprovider",
@@ -113,10 +113,8 @@ We override this method:
 
   @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
-
             File imgFile = new File(currentPhotoPath);
             if (imgFile.exists()) {
                 myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
